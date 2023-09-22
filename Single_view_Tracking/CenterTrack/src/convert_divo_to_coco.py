@@ -8,12 +8,12 @@ import json
 import cv2
 
 
-DATA_PATH = "../../../../datasets/DIVO/images/"
+DATA_PATH = "/home/fatih/phd/DIVOTrack/datasets/DIVO/images/"
 OUT_PATH = DATA_PATH + 'annotations/'
 if not os.path.exists(OUT_PATH):
   os.mkdir(OUT_PATH)
 
-SPLITS = ['train', 'test']
+SPLITS = [ 'test']
 HALF_VIDEO = True
 CREATE_SPLITTED_ANN = True
 CREATE_SPLITTED_DET = True
@@ -56,25 +56,24 @@ if __name__ == '__main__':
                       'video_id': video_cnt}
         out['images'].append(image_info)
       print('{}: {} images'.format(seq, num_images))
-      if split != 'test':
-        anns = np.loadtxt(ann_path, dtype=np.float32, delimiter=',')
-
-        print(' {} ann images'.format(int(anns[:, 0].max())))
-        for i in range(anns.shape[0]):
-          frame_id = int(anns[i][0]) - int(anns[:, 0].min())
-          if (frame_id < image_range[0] or frame_id > image_range[1]):
-            continue
-          track_id = int(anns[i][1])
-          cat_id = int(anns[i][7])
-          ann_cnt += 1
-          ann = {'id': ann_cnt,
-                 'category_id': 1,
-                 'image_id': image_cnt + frame_id,
-                 'track_id': track_id,
-                 'bbox': anns[i][2:6].tolist(),
-                 'conf': 1.}
-          out['annotations'].append(ann)
-      image_cnt += num_images
+      #if split != 'test':
+      anns = np.loadtxt(ann_path, dtype=np.float32, delimiter=',')
+      print(' {} ann images'.format(int(anns[:, 0].max())))
+      for i in range(anns.shape[0]):
+        frame_id = int(anns[i][0]) - int(anns[:, 0].min())
+        if (frame_id < image_range[0] or frame_id > image_range[1]):
+          continue
+        track_id = int(anns[i][1])
+        cat_id = int(anns[i][7])
+        ann_cnt += 1
+        ann = {'id': ann_cnt,
+                'category_id': 1,
+                'image_id': image_cnt + frame_id,
+                'track_id': track_id,
+                'bbox': anns[i][2:6].tolist(),
+                'conf': 1.}
+        out['annotations'].append(ann)
+    image_cnt += num_images
     print('loaded {} for {} images and {} samples'.format(
       split, len(out['images']), len(out['annotations'])))
     json.dump(out, open(out_path, 'w'))
