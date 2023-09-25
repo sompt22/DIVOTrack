@@ -13,5 +13,4 @@ dist
 *.tar
 *.zip
 *.gif
-*.txt
 .DS_Store
