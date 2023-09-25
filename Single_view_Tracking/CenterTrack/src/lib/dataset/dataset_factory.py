@@ -17,6 +17,8 @@ from .datasets.crowdhuman import CrowdHuman
 from .datasets.kitti_tracking import KITTITracking
 from .datasets.custom_dataset import CustomDataset
 from .datasets.divo import DIVO
+from .datasets.mot20 import MOT20
+from .datasets.sompt22 import SOMPT22
 
 dataset_factory = {
   'custom': CustomDataset,
@@ -27,7 +29,9 @@ dataset_factory = {
   'nuscenes': nuScenes,
   'crowdhuman': CrowdHuman,
   'kitti_tracking': KITTITracking,
-  'divo': DIVO
+  'divo': DIVO,
+  'mot20': MOT20,
+  'sompt22': SOMPT22
 }
 
 
