@@ -8,12 +8,12 @@ import json
 import cv2
 
 
-DATA_PATH = "/home/fatih/phd/DIVOTrack/datasets/DIVO/images/"
+DATA_PATH = "/home/fatih/phd/mot_dataset/MOT20/images/"
 OUT_PATH = DATA_PATH + 'annotations/'
 if not os.path.exists(OUT_PATH):
   os.mkdir(OUT_PATH)
 
-SPLITS = ['train']
+SPLITS = ['train','test']
 HALF_VIDEO = True
 CREATE_SPLITTED_ANN = True
 CREATE_SPLITTED_DET = True
