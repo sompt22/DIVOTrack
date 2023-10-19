@@ -1,7 +1,7 @@
 ==> torch version: 1.13.1
 ==> cudnn version: 8500
 ==> Cmd:
-['main.py', 'tracking', '--exp_id', 'mot20', '--dataset', 'mot20', '--pre_hm', '--ltrb_amodal', '--same_aug', '--hm_disturb', '0.05', '--lost_disturb', '0.4', '--fp_disturb', '0.1', '--gpus', '0', '--load_model', '../models/crowdhuman.pth', '--num_epochs', '30', '--batch_size', '16']
+['main.py', 'tracking', '--exp_id', 'mot20', '--dataset', 'mot20', '--pre_hm', '--ltrb_amodal', '--same_aug', '--hm_disturb', '0.05', '--lost_disturb', '0.4', '--fp_disturb', '0.1', '--gpus', '0', '--load_model', '../models/crowdhuman.pth', '--num_epochs', '30', '--batch_size', '8']
 ==> Opt:
   K: 100
   add_05: False
@@ -9,8 +9,8 @@
   arch: dla_34
   aug_rot: 0
   backbone: dla34
-  batch_size: 16
-  chunk_sizes: [16]
+  batch_size: 8
+  chunk_sizes: [8]
   custom_dataset_ann_path: 
   custom_dataset_img_path: 
   data_dir: /home/fatih/phd/DIVOTrack/Single_view_Tracking/CenterTrack/src/lib/../../../../datasets/mot20
@@ -62,7 +62,7 @@
   ltrb_amodal_weight: 0.1
   ltrb_weight: 0.1
   map_argoverse_id: False
-  master_batch_size: 16
+  master_batch_size: 8
   max_age: -1
   max_frame_dist: 3
   model_output_list: False
