@@ -22,13 +22,13 @@ def demo(opt):
     mkdir_if_missing(result_root)
 
     logger.info('Starting tracking...')
-    dataloader = datasets.LoadVideo(opt.input_video, opt.img_size)
+    dataloader = datasets.LoadImages(opt.input_video, opt.img_size)
     result_filename = os.path.join(result_root, 'results.txt')
-    frame_rate = dataloader.frame_rate
+    #frame_rate = dataloader.frame_rate
 
     frame_dir = None if opt.output_format == 'text' else osp.join(result_root, 'frame')
     eval_seq(opt, dataloader, 'mot', result_filename,
-             save_dir=frame_dir, show_image=False, frame_rate=frame_rate,
+             save_dir=frame_dir, show_image=False, frame_rate=30, #frame_rate,
              use_cuda=opt.gpus!=[-1])
 
     if opt.output_format == 'video':
