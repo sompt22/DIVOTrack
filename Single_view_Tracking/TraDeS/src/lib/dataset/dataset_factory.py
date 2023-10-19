@@ -29,7 +29,9 @@ dataset_factory = {
   'crowdhuman': CrowdHuman,
   'kitti_tracking': KITTITracking,
   'youtube_vis': youtube_vis,
-  'divo': DIVO
+  'divo': DIVO,
+  'mot20': MOT20,
+  'sompt22': SOMPT22
 }
 
 

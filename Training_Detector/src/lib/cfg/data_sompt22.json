@@ -1,0 +1,10 @@
+{
+     "root":"../../datasets",
+    "train":
+    {
+        "street":"./data/sompt22.train"
+    },
+    "test": {
+        "street":"./data/sompt22.val"
+    }
+}
