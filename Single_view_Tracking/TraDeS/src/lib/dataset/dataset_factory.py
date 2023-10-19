@@ -18,6 +18,7 @@ from .datasets.kitti_tracking import KITTITracking
 from .datasets.youtube_vis import youtube_vis
 from .datasets.custom_dataset import CustomDataset
 from .datasets.divo import DIVO
+from .datasets.mot20 import MOT20
 
 dataset_factory = {
   'custom': CustomDataset,
@@ -29,7 +30,8 @@ dataset_factory = {
   'crowdhuman': CrowdHuman,
   'kitti_tracking': KITTITracking,
   'youtube_vis': youtube_vis,
-  'divo': DIVO
+  'divo': DIVO,
+  'mot20': MOT20
 }
 
 

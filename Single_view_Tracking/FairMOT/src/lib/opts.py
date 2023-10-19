@@ -100,6 +100,8 @@ class opts(object):
                                   ' during validation.')
     # tracking
     self.parser.add_argument('--test_divo', default=False, help='test divo')
+    self.parser.add_argument('--test_sompt22', default=False, help='test sompt22')
+    self.parser.add_argument('--test_mot20', default=False, help='test mot20')
     self.parser.add_argument('--exp_name', type=str, default='inference', help='inference directory')
     self.parser.add_argument('--conf_thres', type=float, default=0.4, help='confidence thresh for tracking')
     self.parser.add_argument('--det_thres', type=float, default=0.3, help='confidence thresh for detection')

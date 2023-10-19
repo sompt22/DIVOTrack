@@ -139,11 +139,22 @@ def main(opt, data_root='/data/MOT16/train', det_root=None, seqs=('MOT16-05',), 
 
 
 if __name__ == '__main__':
-    os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     opt = opts().init()
     if opt.test_divo:
         data_root = os.path.join(opt.data_dir, 'DIVO/images/test')
         seqs = [seq for seq in sorted(os.listdir(data_root))]
+
+
+    if opt.test_sompt22:
+        data_root = os.path.join(opt.data_dir, 'SOMPT22/images/test')
+        seqs = [seq for seq in sorted(os.listdir(data_root))]
+
+
+    if opt.test_mot20:
+         data_root = os.path.join(opt.data_dir, 'MOT20/images/test')
+         seqs = [seq for seq in sorted(os.listdir(data_root))]
+
 
     main(opt,
          data_root=data_root,
