@@ -1,5 +1,5 @@
 # DIVOTrack: A Novel Dataset and Baseline Method for Cross-View Multi-Object Tracking in DIVerse Open Scenes
-[![](http://img.shields.io/badge/cs.CV-arXiv%3A2308.09592-B31B1B.svg)](https://arxiv.org/abs/2302.07676)
+[![](http://img.shields.io/badge/cs.CV-arXiv%3A2302.07676-B31B1B.svg)](https://arxiv.org/abs/2302.07676)
 [![](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-orange)](https://huggingface.co/datasets/syhao777/DIVOTrack)
 
 This repository contains the details of the dataset and the Pytorch implementation of the Baseline Method CrossMOT of the Paper:
@@ -66,7 +66,7 @@ We conducted experiments on DIVOTrack in five benchmarks:
 | [DeepSort](./Single_view_Tracking/Deepsort/)       | 54.3 | 59.9 | 79.6 | 81.2 | 462 | 50 | 45.0 | 1,920 | **2,504** |
 | [CenterTrack](./Single_view_Tracking/CenterTrack/) | 55.3 | 62.2 | 73.4 | 80.6 | **534** | 35 | 49.2 | 1,631 | 2,950 |
 | [Tracktor](./Single_view_Tracking/Tracktor/)       | 48.4 | 56.2 | 66.6 | 80.8 | 517 | **22** | 40.3 | 1,382 | 3,337 |
-| [FairMOT](./Single_view_Tracking/FairMOT/)         | 65.3 | 78.2 | 82.7 | 81.9 | 486 | 48 | **62.7** | 731   | 3,498 |
+| [FairMOT](./Single_view_Tracking/FairMOT/)         | **65.3** | **78.2** | **82.7** | 81.9 | 486 | 48 | **62.7** | 731   | 3,498 |
 | [TraDeS](./Single_view_Tracking/TraDeS/)           | 58.9 | 67.3 | 74.2 | **82.3** | 504 | 38 | 54.0 | 1,263 | 2,647 |
 
 Each single-view tracking baseline is evaluated using [TrackEval](https://github.com/shengyuhao/DIVOTrack/tree/main/TrackEval#readme).
