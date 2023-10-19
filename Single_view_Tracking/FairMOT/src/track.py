@@ -142,9 +142,30 @@ if __name__ == '__main__':
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     opt = opts().init()
     if opt.test_divo:
-        data_root = os.path.join(opt.data_dir, 'DIVO/images/test')
+        data_root = os.path.join(opt.data_dir, 'divo/images/test')
         seqs = [seq for seq in sorted(os.listdir(data_root))]
-
+    
+    if opt.test_divo_train:
+        data_root = os.path.join(opt.data_dir, 'divo/images/train')
+        seqs = [seq for seq in sorted(os.listdir(data_root))]       
+    
+    if opt.test_sompt22:
+        data_root = os.path.join(opt.data_dir, 'sompt22/images/test')
+        seqs = [seq for seq in sorted(os.listdir(data_root))]
+    
+    if opt.test_sompt22_train:
+        data_root = os.path.join(opt.data_dir, 'sompt22/images/train')
+        seqs = [seq for seq in sorted(os.listdir(data_root))]   
+    
+    if opt.test_mot20:
+        data_root = os.path.join(opt.data_dir, 'mot20/images/test')
+        seqs = [seq for seq in sorted(os.listdir(data_root))]           
+        
+    if opt.test_mot20_train:
+        data_root = os.path.join(opt.data_dir, 'mot20/images/train')
+        seqs = [seq for seq in sorted(os.listdir(data_root))]          
+        
+    
     main(opt,
          data_root=data_root,
          seqs=seqs,

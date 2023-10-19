@@ -1,6 +1,6 @@
 import os
 
-results_path = './'
+results_path = './results/inference/'
 save_path = './resize/'
 files = os.listdir(results_path)
 for file in files:
