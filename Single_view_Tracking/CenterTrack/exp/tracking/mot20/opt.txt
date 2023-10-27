@@ -1,7 +1,7 @@
 ==> torch version: 1.13.1
 ==> cudnn version: 8500
 ==> Cmd:
-['main.py', 'tracking', '--exp_id', 'mot20', '--dataset', 'mot20', '--pre_hm', '--ltrb_amodal', '--same_aug', '--hm_disturb', '0.05', '--lost_disturb', '0.4', '--fp_disturb', '0.1', '--gpus', '0', '--load_model', '../models/crowdhuman.pth', '--num_epochs', '30', '--batch_size', '16']
+['main.py', 'tracking', '--exp_id', 'mot20', '--dataset', 'mot20', '--pre_hm', '--ltrb_amodal', '--same_aug', '--hm_disturb', '0.05', '--lost_disturb', '0.4', '--fp_disturb', '0.1', '--gpus', '0', '--load_model', '../models/crowdhuman_divo_trained.pth', '--num_epochs', '30', '--batch_size', '16']
 ==> Opt:
   K: 100
   add_05: False
@@ -52,7 +52,7 @@
   input_w: 960
   keep_res: False
   kitti_split: 3dop
-  load_model: ../models/crowdhuman.pth
+  load_model: ../models/crowdhuman_divo_trained.pth
   load_results: 
   lost_disturb: 0.4
   lr: 0.000125
