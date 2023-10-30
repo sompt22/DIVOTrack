@@ -37,17 +37,17 @@ def gen_data_path(root_path):
     f.close()
 
 def gen_data_path(root_path):
-    mot_path = 'DIVO/images/train'
+    mot_path = 'sompt22/images/train'
     real_path = os.path.join(root_path, mot_path)
     seq_names = [s for s in sorted(os.listdir(real_path))]
-    with open('/home/fatih/phd/DIVOTrack/Single_view_Tracking/FairMOT/src/data/divo.train', 'w') as f:
+    with open('/home/fatih/phd/DIVOTrack/Single_view_Tracking/FairMOT/src/data/sompt22.train', 'w') as f:
         for seq_name in seq_names:
             seq_path = os.path.join(real_path, seq_name)
             seq_path = os.path.join(seq_path, 'img1')
             images = sorted(glob.glob(seq_path + '/*.jpg'))
             len_all = len(images)
             len_half = int(len_all / 2)
-            for i in range(len_half):
+            for i in range(len_all):
                 image = images[i]
                 print(image[35:], file=f)
     f.close()
