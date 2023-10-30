@@ -223,7 +223,7 @@ class opts(object):
       if opt.reg_offset:
         opt.heads.update({'reg': 2})
       opt.nID = dataset.nID
-      opt.img_size = (1088, 608)
+      opt.img_size = (960, 544)
       #opt.img_size = (864, 480)
       #opt.img_size = (576, 320)
     else:
@@ -233,7 +233,7 @@ class opts(object):
 
   def init(self, args=''):
     default_dataset_info = {
-      'mot': {'default_resolution': [608, 1088], 'num_classes': 1,
+      'mot': {'default_resolution': [544, 960], 'num_classes': 1,
                 'mean': [0.408, 0.447, 0.470], 'std': [0.289, 0.274, 0.278],
                 'dataset': 'jde', 'nID': 14455},
     }

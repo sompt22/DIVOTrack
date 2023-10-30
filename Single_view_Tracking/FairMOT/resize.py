@@ -1,7 +1,7 @@
 import os
 
-results_path = './results/inference/'
-save_path = './resize/'
+results_path = './results/divo_test/'
+save_path = '/home/fatih/phd/DIVOTrack/TrackEval/data/trackers/mot_challenge/DIVO-test/fairmot/data/'
 files = os.listdir(results_path)
 for file in files:
     f = open(results_path + file, 'r')

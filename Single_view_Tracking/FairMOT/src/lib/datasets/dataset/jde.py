@@ -21,7 +21,7 @@ from utils.utils import xyxy2xywh, generate_anchors, xywh2xyxy, encode_delta
 
 
 class LoadImages:  # for inference
-    def __init__(self, path, img_size=(1088, 608)):
+    def __init__(self, path, img_size=(960, 544)):
         if os.path.isdir(path):
             image_format = ['.jpg', '.jpeg', '.png', '.tif']
             self.files = sorted(glob.glob('%s/*.*' % path))
@@ -84,7 +84,7 @@ class LoadImages:  # for inference
 
 
 class LoadVideo:  # for inference
-    def __init__(self, path, img_size=(1088, 608)):
+    def __init__(self, path, img_size=(960, 544)):
         self.cap = cv2.VideoCapture(path)
         self.frame_rate = int(round(self.cap.get(cv2.CAP_PROP_FPS)))
         self.vw = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -132,7 +132,7 @@ class LoadVideo:  # for inference
 
 
 class LoadImagesAndLabels:  # for training
-    def __init__(self, path, img_size=(1088, 608), augment=False, transforms=None):
+    def __init__(self, path, img_size=(960, 544), augment=False, transforms=None):
         with open(path, 'r') as file:
             self.img_files = file.readlines()
             self.img_files = [x.replace('\n', '') for x in self.img_files]
@@ -240,7 +240,7 @@ class LoadImagesAndLabels:  # for training
         return self.nF  # number of batches
 
 
-def letterbox(img, height=608, width=1088,
+def letterbox(img, height=544, width=960,
               color=(127.5, 127.5, 127.5)):  # resize a rectangular image to a padded rectangular
     shape = img.shape[:2]  # shape = [height, width]
     ratio = min(float(height) / shape[0], float(width) / shape[1])
@@ -352,12 +352,12 @@ def collate_fn(batch):
 
 
 class JointDataset(LoadImagesAndLabels):  # for training
-    default_resolution = [1088, 608]
+    default_resolution = [960, 544]
     mean = None
     std = None
     num_classes = 1
 
-    def __init__(self, opt, root, paths, img_size=(1088, 608), augment=False, transforms=None):
+    def __init__(self, opt, root, paths, img_size=(960, 544), augment=False, transforms=None):
         self.opt = opt
         dataset_names = paths.keys()
         self.img_files = OrderedDict()
@@ -491,7 +491,7 @@ class JointDataset(LoadImagesAndLabels):  # for training
 
 
 class DetDataset(LoadImagesAndLabels):  # for training
-    def __init__(self, root, paths, img_size=(1088, 608), augment=False, transforms=None):
+    def __init__(self, root, paths, img_size=(960, 544), augment=False, transforms=None):
         dataset_names = paths.keys()
         self.img_files = OrderedDict()
         self.label_files = OrderedDict()
