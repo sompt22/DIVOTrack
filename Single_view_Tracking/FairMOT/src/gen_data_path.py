@@ -37,7 +37,7 @@ def gen_data_path(root_path):
     f.close()
 
 def gen_data_path(root_path):
-    mot_path = 'sompt22/images/train'
+    mot_path = 'divo/images/train'
     real_path = os.path.join(root_path, mot_path)
     seq_names = [s for s in sorted(os.listdir(real_path))]
     with open('/home/fatih/phd/DIVOTrack/Single_view_Tracking/FairMOT/src/data/sompt22.train', 'w') as f:

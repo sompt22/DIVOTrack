@@ -1,0 +1,14 @@
+2023-10-29-10-12: epoch: 1 |loss 4.287827 | hm_loss 0.520214 | wh_loss 0.551941 | off_loss 0.194523 | id_loss 2.566816 | time 39.200000 | 
+2023-10-29-10-51: epoch: 2 |loss 1.483472 | hm_loss 0.443668 | wh_loss 0.518163 | off_loss 0.190001 | id_loss 0.896499 | time 39.116667 | 
+2023-10-29-11-30: epoch: 3 |loss 0.714163 | hm_loss 0.414745 | wh_loss 0.504342 | off_loss 0.187739 | id_loss 0.456790 | time 39.100000 | 
+2023-10-29-12-09: epoch: 4 |loss 0.347577 | hm_loss 0.393968 | wh_loss 0.494203 | off_loss 0.186175 | id_loss 0.286523 | time 39.083333 | 
+2023-10-29-12-48: epoch: 5 |loss 0.101710 | hm_loss 0.382244 | wh_loss 0.489653 | off_loss 0.185265 | id_loss 0.199389 | time 39.116667 | 
+2023-10-29-13-27: epoch: 6 |loss -0.081404 | hm_loss 0.373540 | wh_loss 0.487448 | off_loss 0.184567 | id_loss 0.150261 | time 39.100000 | 
+2023-10-29-14-06: epoch: 7 |loss -0.221791 | hm_loss 0.366307 | wh_loss 0.483031 | off_loss 0.184366 | id_loss 0.119692 | time 39.150000 | 
+2023-10-29-14-46: epoch: 8 |loss -0.335633 | hm_loss 0.362156 | wh_loss 0.484704 | off_loss 0.184014 | id_loss 0.097554 | time 39.133333 | 
+2023-10-29-15-25: epoch: 9 |loss -0.426853 | hm_loss 0.362076 | wh_loss 0.483788 | off_loss 0.183951 | id_loss 0.082727 | time 39.116667 | 
+2023-10-29-16-04: epoch: 10 |loss -0.504529 | hm_loss 0.360909 | wh_loss 0.488111 | off_loss 0.183915 | id_loss 0.072687 | time 39.100000 | 
+2023-10-29-16-43: epoch: 11 |loss -0.568274 | hm_loss 0.359630 | wh_loss 0.487664 | off_loss 0.184443 | id_loss 0.066081 | time 39.083333 | 
+2023-10-29-17-22: epoch: 12 |loss -0.623731 | hm_loss 0.359514 | wh_loss 0.486808 | off_loss 0.183881 | id_loss 0.060782 | time 39.083333 | 
+2023-10-29-18-01: epoch: 13 |loss -0.689070 | hm_loss 0.358071 | wh_loss 0.486073 | off_loss 0.184006 | id_loss 0.053788 | time 39.083333 | 
+2023-10-29-18-40: epoch: 14 |loss -0.719086 | hm_loss 0.358999 | wh_loss 0.489155 | off_loss 0.184064 | id_loss 0.051862 | time 39.083333 | 
