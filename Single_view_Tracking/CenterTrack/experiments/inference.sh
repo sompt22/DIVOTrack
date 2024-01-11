@@ -8,5 +8,5 @@ video_path=$(realpath $3)
 
 cd src
 # infer --motchallenge saves inference results
-python demo.py tracking,embedding --exp_id $experiment_name --max_age 15 --debug 1 --load_model $model_path --num_classes 1 --demo $video_path 
+python demo.py tracking --exp_id $experiment_name --max_age 15 --debug 1 --load_model $model_path --num_classes 1 --demo $video_path 
 cd ..
