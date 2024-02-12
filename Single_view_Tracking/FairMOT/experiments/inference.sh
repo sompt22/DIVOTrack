@@ -14,5 +14,5 @@ printf "experiment_name: $experiment_name\n"
 
 cd src
 # infer --motchallenge saves inference results
-python demo.py tracking --exp_id $experiment_name --max_age 5 --debug 3 --save_video --load_model $model_path --num_classes 1 --demo $video_path 
+python demo.py mot --load_model $model_path --input-video $video_path --conf_thres 0.4
 cd ..
