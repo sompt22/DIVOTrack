@@ -46,8 +46,10 @@ def demo(opt):
   out_name = opt.demo[opt.demo.rfind('/') + 1:]
   print('out_name', out_name)
   if opt.save_video:
-    # fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    fourcc = cv2.VideoWriter_fourcc(*'H264')
+    if not os.path.exists('../results'):
+      os.mkdir('../results')
+    #fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter('../results/{}.mp4'.format(
       opt.exp_id + '_' + out_name),fourcc, opt.save_framerate, (
         opt.video_w, opt.video_h))
@@ -95,8 +97,8 @@ def demo(opt):
       # save debug image to video
       if opt.save_video:
         out.write(ret['generic'])
-        if not is_video:
-          cv2.imwrite('../results/demo{}.jpg'.format(cnt), ret['generic'])
+        #if not is_video:
+        cv2.imwrite('../results/demo{}.jpg'.format(cnt), ret['generic'])
       
       # esc to quit and finish saving video
       if cv2.waitKey(1) == 27:
