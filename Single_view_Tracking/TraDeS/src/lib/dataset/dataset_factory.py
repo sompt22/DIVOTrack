@@ -20,6 +20,7 @@ from .datasets.custom_dataset import CustomDataset
 from .datasets.divo import DIVO
 from .datasets.mot20 import MOT20
 from .datasets.sompt22 import SOMPT22
+from .datasets.sompt22_train_sim import SOMPT22_TRAIN_SIM
 
 dataset_factory = {
   'custom': CustomDataset,
@@ -33,7 +34,8 @@ dataset_factory = {
   'youtube_vis': youtube_vis,
   'divo': DIVO,
   'mot20': MOT20,
-  'sompt22': SOMPT22
+  'sompt22': SOMPT22,
+  'sompt22-train-sim': SOMPT22_TRAIN_SIM
 }
 
 

@@ -105,6 +105,7 @@ class opts(object):
     self.parser.add_argument('--test_mot20_train', default=False, help='test mot20 train')
     self.parser.add_argument('--test_sompt22', default=False, help='test sompt22')
     self.parser.add_argument('--test_sompt22_train', default=False, help='test sompt22 train')
+    self.parser.add_argument('--test_sompt22_train_sim', default=False, help='test sompt22_train_sim train')
     self.parser.add_argument('--exp_name', type=str, default='inference', help='inference directory')
     self.parser.add_argument('--conf_thres', type=float, default=0.4, help='confidence thresh for tracking')
     self.parser.add_argument('--det_thres', type=float, default=0.3, help='confidence thresh for detection')

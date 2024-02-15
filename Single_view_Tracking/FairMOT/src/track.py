@@ -163,7 +163,11 @@ if __name__ == '__main__':
         
     if opt.test_mot20_train:
         data_root = os.path.join(opt.data_dir, 'mot20/images/train')
-        seqs = [seq for seq in sorted(os.listdir(data_root))]          
+        seqs = [seq for seq in sorted(os.listdir(data_root))]
+    
+    if opt.test_sompt22_train_sim:
+        data_root = os.path.join(opt.data_dir, 'sompt22-train-sim/images/test')
+        seqs = [seq for seq in sorted(os.listdir(data_root))]        
         
     
     main(opt,
