@@ -1,7 +1,7 @@
 ==> torch version: 1.13.1
 ==> cudnn version: 8500
 ==> Cmd:
-['main.py', 'tracking', '--exp_id', 'sompt22', '--dataset', 'sompt22', '--pre_hm', '--ltrb_amodal', '--val_intervals', '1', '--lr', '1.25e-4', '--same_aug', '--hm_disturb', '0.05', '--lost_disturb', '0.4', '--fp_disturb', '0.1', '--gpus', '0', '--load_model', '../models/crowdhuman_divo_trained.pth', '--num_epochs', '30', '--batch_size', '16']
+['main.py', 'tracking', '--exp_id', 'sompt22', '--dataset', 'sompt22', '--pre_hm', '--ltrb_amodal', '--val_intervals', '3', '--lr', '1.25e-5', '--same_aug', '--hm_disturb', '0.05', '--lost_disturb', '0.4', '--fp_disturb', '0.1', '--gpus', '0', '--load_model', '../models/crowdhuman_divo_trained.pth', '--num_epochs', '30', '--batch_size', '16']
 ==> Opt:
   K: 100
   add_05: False
@@ -55,7 +55,7 @@
   load_model: ../models/crowdhuman_divo_trained.pth
   load_results: 
   lost_disturb: 0.4
-  lr: 0.000125
+  lr: 1.25e-05
   lr_step: [60]
   ltrb: False
   ltrb_amodal: True
@@ -143,7 +143,7 @@
   transpose_video: False
   use_kpt_center: False
   use_loaded_results: False
-  val_intervals: 1
+  val_intervals: 3
   velocity: False
   velocity_weight: 1
   video_h: 512
