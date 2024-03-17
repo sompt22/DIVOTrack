@@ -11,7 +11,6 @@ from collections import defaultdict
 from ..generic_dataset import GenericDataset
 
 class SOMPT22(GenericDataset):
-  num_classes = 1
   num_categories = 1
   default_resolution = [544, 960]
   class_name = ['']
@@ -23,9 +22,9 @@ class SOMPT22(GenericDataset):
 
     data_dir = os.path.join(opt.data_dir, 'images')
     
-    ann_file = '{}.json'.format('train' if split == 'train' else 'val')
+    ann_file = '{}.json'.format('train' if split == 'train' else 'test')
 
-    img_dir = os.path.join(data_dir, '{}'.format('train' if split == 'train' else 'val'))
+    img_dir = os.path.join(data_dir, '{}'.format('train' if split == 'train' else 'test'))
     print('ann_file', ann_file)
     ann_path = os.path.join(data_dir, 'annotations', ann_file)
 
