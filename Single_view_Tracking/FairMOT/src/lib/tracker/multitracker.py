@@ -194,6 +194,8 @@ class JDETracker(object):
         self.std = np.array(opt.std, dtype=np.float32).reshape(1, 1, 3)
 
         self.kalman_filter = KalmanFilter()
+        self.associationFile = os.path.join(opt.output_root, 'association.txt')
+        self.association = open(self.associationFile, 'a')
 
     def post_process(self, dets, meta):
         dets = dets.detach().cpu().numpy()
@@ -293,10 +295,41 @@ class JDETracker(object):
         #for strack in strack_pool:
             #strack.predict()
         STrack.multi_predict(strack_pool)
+        det_features = np.asarray([track.curr_feat for track in detections], dtype=np.float)
+        track_features = np.asarray([track.smooth_feat for track in strack_pool], dtype=np.float)
         dists = matching.embedding_distance(strack_pool, detections)
+        self.association.write('Frame: {}\n'.format(self.frame_id))
+        self.association.write('Shape of det_features: {}\n'.format(det_features.shape))
+        self.association.write('Shape of track_features: {}\n'.format(track_features.shape))
+        self.association.write('Detection Features: \n')
+        self.association.write(str(det_features) + '\n')
+        if det_features.shape[0] > 0:
+            self.association.write('Detection Features Min and Max for each vector: \n')
+            mins = np.min(det_features, axis=1)
+            maxs = np.max(det_features, axis=1)
+            for i, (min_val, max_val) in enumerate(zip(mins, maxs)):
+                self.association.write(f'Vector {i+1}: Min = {min_val}, Max = {max_val}\n')
+        self.association.write('Track Features: \n')
+        self.association.write(str(track_features) + '\n')
+        if track_features.shape[0] > 0:
+            self.association.write('Track Features Min and Max for each vector: \n')
+            mins = np.min(track_features, axis=1)
+            maxs = np.max(track_features, axis=1)
+            for i, (min_val, max_val) in enumerate(zip(mins, maxs)):
+                self.association.write(f'Vector {i+1}: Min = {min_val}, Max = {max_val}\n')
+        self.association.write('Distances before fuse motion: \n')
+        self.association.write(str(dists) + '\n')
         #dists = matching.iou_distance(strack_pool, detections)
         dists = matching.fuse_motion(self.kalman_filter, dists, strack_pool, detections)
+        self.association.write('Distances after fuse motion: \n')
+        self.association.write(str(dists) + '\n')
         matches, u_track, u_detection = matching.linear_assignment(dists, thresh=0.4)
+        self.association.write('Matches: \n')
+        self.association.write(str(matches) + '\n')
+        self.association.write('Unmatched Track: \n')
+        self.association.write(str(u_track) + '\n')
+        self.association.write('Unmatched Detection: \n')
+        self.association.write(str(u_detection) + '\n')
 
         for itracked, idet in matches:
             track = strack_pool[itracked]
