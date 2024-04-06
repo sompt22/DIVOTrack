@@ -298,12 +298,13 @@ class JDETracker(object):
         det_features = np.asarray([track.curr_feat for track in detections], dtype=np.float)
         track_features = np.asarray([track.smooth_feat for track in strack_pool], dtype=np.float)
         dists = matching.embedding_distance(strack_pool, detections)
-        #self.association.write('Frame: {}\n'.format(self.frame_id))
-        #self.association.write('Shape of det_features: {}\n'.format(det_features.shape))
-        #self.association.write('Shape of track_features: {}\n'.format(track_features.shape))
-        #self.association.write('Detection Features: \n')
-        #self.association.write(str(det_features) + '\n')
         """
+        self.association.write('Frame: {}\n'.format(self.frame_id))
+        self.association.write('Shape of det_features: {}\n'.format(det_features.shape))
+        self.association.write('Shape of track_features: {}\n'.format(track_features.shape))
+        self.association.write('Detection Features: \n')
+        self.association.write(str(det_features) + '\n')
+        
         if det_features.shape[0] > 0:
             self.association.write('Detection Features Min and Max for each vector: \n')
             mins = np.min(det_features, axis=1)
