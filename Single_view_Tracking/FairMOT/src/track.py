@@ -11,6 +11,7 @@ import argparse
 import motmetrics as mm
 import numpy as np
 import torch
+import json
 
 from tracker.multitracker import JDETracker
 from tracking_utils import visualization as vis
@@ -67,7 +68,7 @@ def write_results_score(filename, results, data_type):
     logger.info('save results to {}'.format(filename))
 
 
-def eval_seq(opt, dataloader, data_type, result_filename, save_dir=None, show_image=True, frame_rate=30, use_cuda=True):
+def eval_seq(opt, dataloader, data_type, result_filename, save_dir=None, show_image=True, frame_rate=30, use_cuda=True, sequence_data=None):
     if save_dir:
         mkdir_if_missing(save_dir)
     tracker = JDETracker(opt, frame_rate=frame_rate)
@@ -99,6 +100,12 @@ def eval_seq(opt, dataloader, data_type, result_filename, save_dir=None, show_im
                 online_tlwhs.append(tlwh)
                 online_ids.append(tid)
                 #online_scores.append(t.score)
+            track_data = {
+                "Track ID": t.track_id,
+                "Frame ID": t.frame_id,
+                "Feature Vector": t.curr_feat.tolist() if hasattr(t.curr_feat, 'tolist') else t.curr_feat
+            }
+            sequence_data["Tracks"].append(track_data)
         timer.toc()
         # save results
         results.append((frame_id + 1, online_tlwhs, online_ids))
@@ -123,10 +130,15 @@ def main(opt, data_root='/data/MOT16/train', det_root=None, seqs=('MOT16-05',), 
     result_root = os.path.join('..', 'results', exp_name)
     mkdir_if_missing(result_root)
     data_type = 'mot'
-
+    
+    associationFile = os.path.join(opt.output_root, 'association.json')
+    association = open(associationFile, 'a')
+    data = {"Sequences": []
+            }
     # run tracking
     for seq in seqs:
-
+        sequence_data = {"SequenceID": seq,
+                         "Tracks": []}
         output_dir = os.path.join('..', 'outputs', exp_name, seq) if save_images or save_videos else None
         logger.info('start seq: {}'.format(seq))
 
@@ -135,8 +147,9 @@ def main(opt, data_root='/data/MOT16/train', det_root=None, seqs=('MOT16-05',), 
         # meta_info = open(os.path.join(data_root, seq, 'seqinfo.ini')).read()
         # frame_rate = int(meta_info[meta_info.find('frameRate') + 10:meta_info.find('\nseqLength')])
         frame_rate=30
-        eval_seq(opt, dataloader, data_type, result_filename, save_dir=output_dir, show_image=show_image, frame_rate=frame_rate)
-
+        eval_seq(opt, dataloader, data_type, result_filename, save_dir=output_dir, show_image=show_image, frame_rate=frame_rate,sequence_data=sequence_data)
+        data["Sequences"].append(sequence_data)
+    association.write(json.dumps(data))
 
 if __name__ == '__main__':
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'

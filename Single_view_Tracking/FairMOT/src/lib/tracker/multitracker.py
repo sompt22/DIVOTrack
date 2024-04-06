@@ -194,8 +194,8 @@ class JDETracker(object):
         self.std = np.array(opt.std, dtype=np.float32).reshape(1, 1, 3)
 
         self.kalman_filter = KalmanFilter()
-        self.associationFile = os.path.join(opt.output_root, 'association.txt')
-        self.association = open(self.associationFile, 'a')
+        #self.associationFile = os.path.join(opt.output_root, 'association.txt')
+        #self.association = open(self.associationFile, 'a')
 
     def post_process(self, dets, meta):
         dets = dets.detach().cpu().numpy()
@@ -298,11 +298,12 @@ class JDETracker(object):
         det_features = np.asarray([track.curr_feat for track in detections], dtype=np.float)
         track_features = np.asarray([track.smooth_feat for track in strack_pool], dtype=np.float)
         dists = matching.embedding_distance(strack_pool, detections)
-        self.association.write('Frame: {}\n'.format(self.frame_id))
-        self.association.write('Shape of det_features: {}\n'.format(det_features.shape))
-        self.association.write('Shape of track_features: {}\n'.format(track_features.shape))
-        self.association.write('Detection Features: \n')
-        self.association.write(str(det_features) + '\n')
+        #self.association.write('Frame: {}\n'.format(self.frame_id))
+        #self.association.write('Shape of det_features: {}\n'.format(det_features.shape))
+        #self.association.write('Shape of track_features: {}\n'.format(track_features.shape))
+        #self.association.write('Detection Features: \n')
+        #self.association.write(str(det_features) + '\n')
+        """
         if det_features.shape[0] > 0:
             self.association.write('Detection Features Min and Max for each vector: \n')
             mins = np.min(det_features, axis=1)
@@ -320,16 +321,17 @@ class JDETracker(object):
         self.association.write('Distances before fuse motion: \n')
         self.association.write(str(dists) + '\n')
         #dists = matching.iou_distance(strack_pool, detections)
+        """
         dists = matching.fuse_motion(self.kalman_filter, dists, strack_pool, detections)
-        self.association.write('Distances after fuse motion: \n')
-        self.association.write(str(dists) + '\n')
+        #self.association.write('Distances after fuse motion: \n')
+        #self.association.write(str(dists) + '\n')
         matches, u_track, u_detection = matching.linear_assignment(dists, thresh=0.4)
-        self.association.write('Matches: \n')
-        self.association.write(str(matches) + '\n')
-        self.association.write('Unmatched Track: \n')
-        self.association.write(str(u_track) + '\n')
-        self.association.write('Unmatched Detection: \n')
-        self.association.write(str(u_detection) + '\n')
+        #self.association.write('Matches: \n')
+        #self.association.write(str(matches) + '\n')
+        #self.association.write('Unmatched Track: \n')
+        #self.association.write(str(u_track) + '\n')
+        #self.association.write('Unmatched Detection: \n')
+        #self.association.write(str(u_detection) + '\n')
 
         for itracked, idet in matches:
             track = strack_pool[itracked]
@@ -406,7 +408,8 @@ class JDETracker(object):
         logger.debug('Refind: {}'.format([track.track_id for track in refind_stracks]))
         logger.debug('Lost: {}'.format([track.track_id for track in lost_stracks]))
         logger.debug('Removed: {}'.format([track.track_id for track in removed_stracks]))
-
+        #for track in output_stracks:
+            #self.association.write('Track ID: {}, Frame ID: {}, Feature Vector {}'.format(track.track_id, track.frame_id, track.curr_feat))
         return output_stracks
 
 
