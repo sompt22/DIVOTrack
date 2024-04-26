@@ -184,7 +184,18 @@ if __name__ == '__main__':
     if opt.test_sompt22_train_sim:
         data_root = os.path.join(opt.data_dir, 'sompt22-train-sim/images/test')
         seqs = [seq for seq in sorted(os.listdir(data_root))]        
+    
+    if opt.test_sompt22_train_paper:
+        data_root = os.path.join(opt.data_dir, 'sompt22-train-paper/images/test')
+        seqs = [seq for seq in sorted(os.listdir(data_root))]
         
+    if opt.test_sompt22_train_10secs_clear:
+        data_root = os.path.join(opt.data_dir, 'sompt22-train-10secs-clear/images/test')
+        seqs = [seq for seq in sorted(os.listdir(data_root))]        
+        
+    if opt.test_sompt22_train_10secs_occlusion:
+        data_root = os.path.join(opt.data_dir, 'sompt22-train-10secs-occlusion/images/test')
+        seqs = [seq for seq in sorted(os.listdir(data_root))]         
     
     main(opt,
          data_root=data_root,

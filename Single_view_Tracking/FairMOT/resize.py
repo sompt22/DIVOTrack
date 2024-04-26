@@ -1,7 +1,7 @@
 import os
 
-results_path = './results/sompt22_train_sim/'
-save_path = '/home/fatih/phd/DIVOTrack/TrackEval/data/trackers/mot_challenge/SOMPT22-train-sim/fairmot/data'
+results_path = '/home/fatih/phd/DIVOTrack/TrackEval/data/trackers/mot_challenge/SOMPT22-train-10secs-occlusion/fairmot/data/'
+save_path = '/home/fatih/phd/DIVOTrack/TrackEval/data/trackers/mot_challenge/SOMPT22-train-10secs-occlusion/fairmot/data-resize'
 files = os.listdir(results_path)
 for file in files:
     f = open(results_path + file, 'r')

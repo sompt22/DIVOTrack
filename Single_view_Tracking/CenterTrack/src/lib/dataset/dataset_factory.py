@@ -17,6 +17,9 @@ from .datasets.divo import DIVO
 from .datasets.mot20 import MOT20
 from .datasets.sompt22 import SOMPT22
 from .datasets.sompt22_train_sim import SOMPT22_TRAIN_SIM
+from .datasets.sompt22_train_paper import SOMPT22_TRAIN_PAPER
+from .datasets.sompt22_train_10secs_clear import SOMPT22_TRAIN_10SECS_CLEAR
+from .datasets.sompt22_train_10secs_occlusion import SOMPT22_TRAIN_10SECS_OCCLUSION
 
 dataset_factory = {
   'custom': CustomDataset,
@@ -27,7 +30,10 @@ dataset_factory = {
   'divo': DIVO,
   'mot20': MOT20,
   'sompt22': SOMPT22,
-  'sompt22-train-sim': SOMPT22_TRAIN_SIM
+  'sompt22-train-sim': SOMPT22_TRAIN_SIM,
+  'sompt22-train-paper': SOMPT22_TRAIN_PAPER,
+  'sompt22-train-10secs-clear': SOMPT22_TRAIN_10SECS_CLEAR,
+  'sompt22-train-10secs-occlusion': SOMPT22_TRAIN_10SECS_OCCLUSION
 }
 
 
